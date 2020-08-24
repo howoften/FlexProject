@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<UIView layout="flex:1, flexDirection:col, justifyContent:flex-start, margin:0" attr="bgColor:white">
+ <NavigationBar layout="height:statusBarAddedTo(44)" attr="title:首页, titleFont:medium|18, showShadowLine:true, rightButtonTitle:'reload', rightButtonTitleFont:16, pressAtRightBarButton:rightBarButtonClick, leftButtonTitle:'', leftButtonTitleFont:16, pressAtLeftBarButton:leftBarButtonClick"/>
+  <FlexScrollView layout="flex:1, flexDirection:col" attr="vertScroll:true">
+        <UIView layout="flexDirection:row, minHeight:44, justifyContent:flex-start, alignItems:center, margin:10" attr="bgColor:lightGray">
+            <UILabel name="" layout="marginRight:15" attr="fontSize:18,color:#333333,lineBreakMode:truncatingTail,linesNum:1,text:账户类型"/>
+            <UITextField name="" layout="flex:1, height:45" attr="fontSize:18,color:black,textAlign:left,placeholder:请输入账户类型,borderColor:#000, borderWidth:0.5"/>
+        </UIView>
+        <UIView layout="flexDirection:row, minHeight:44, justifyContent:flex-start, alignItems:center, margin:10" attr="">
+            <UILabel name="" layout="marginRight:15" attr="fontSize:18,color:#333333,lineBreakMode:truncatingTail,linesNum:1,text:性别"/>
+            <UISwitch name="" layout="" attr="on:false"/>
+        </UIView>
+
+        <UIView layout="flexDirection:row, minHeight:44, justifyContent:center, alignItems:center, margin:10" attr="">
+            <FlexTouchView onPress="on" layout="width:70%, height:100%" attr="underlayColor:darkGray,bgColor:lightGray">
+                <UILabel name="" layout="flex:1" attr="fontSize:18,color:#ffffff,lineBreakMode:truncatingTail,linesNum:1, textAlign:center, text:确认"/>
+            </FlexTouchView>
+        </UIView>
+    </FlexScrollView>
+</UIView>

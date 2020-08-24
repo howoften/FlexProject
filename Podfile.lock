@@ -1,0 +1,28 @@
+PODS:
+  - FlexLib (2.7.0):
+    - FlexLib/standard (= 2.7.0)
+  - FlexLib/preview (2.7.0):
+    - FlexLib/standard
+  - FlexLib/standard (2.7.0):
+    - FlexLib/standard/no-arc (= 2.7.0)
+    - Yoga (= 1.14.0)
+  - FlexLib/standard/no-arc (2.7.0):
+    - Yoga (= 1.14.0)
+  - Yoga (1.14.0)
+
+DEPENDENCIES:
+  - FlexLib (~> 2.7.0)
+  - FlexLib/preview
+
+SPEC REPOS:
+  trunk:
+    - FlexLib
+    - Yoga
+
+SPEC CHECKSUMS:
+  FlexLib: db9979dfaf1ff89b7934d694bf4c1235592ac12d
+  Yoga: cff67a400f6b74dc38eb0bad4f156673d9aa980c
+
+PODFILE CHECKSUM: fd829c5c39e79b39746cf715bff3f89a88e8d78f
+
+COCOAPODS: 1.9.1

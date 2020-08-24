@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<UIView name ="_contentView" layout="display:flex, flexDirection:col, width:100%, height:statusBarAddedTo(44)" attr="bgColor:#f7f7f7">
+    <UIView layout="display:flex, flexDirection:row, justifyContent:space-between, alignItems:center,  height:43.7, margin:11/statusBarAddedTo(0)/11/0" attr="">
+        <UIButton name="_leftItem" onPress="leftButtonClick" layout="maxWidth:70" attr="title:back,color:black"/>
+        <UILabel name="_titleLabel" layout="maxWidth:110 height:43.7" attr="text:title,color:black, fontSize:medium|18"/>
+        <UIButton name="_rightItem" onPress="rightButtonClick" layout="maxWidth:70" attr="title:reload,color:black"/>
+    </UIView>
+    <UIView name="_bottomLine" layout="flexGrow:1" attr="bgColor:#000000">
+    
+    </UIView>
+</UIView>
