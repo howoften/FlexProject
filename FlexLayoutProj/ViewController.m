@@ -21,5 +21,8 @@
 - (void)rightBarButtonClick {
     [self reloadFlexView];
 }
+- (void)next {
+    [self.navigationController pushViewController:NSClassFromString(@"ViewController1").new animated:YES];
+}
 @end
 

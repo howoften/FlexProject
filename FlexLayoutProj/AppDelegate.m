@@ -22,7 +22,9 @@
 //    NSArray *viewTitles = @[@""];
 //    [rootController ]
 //
-    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:NSClassFromString(@"ViewController").new];
+    UINavigationController *rootVC = [[UINavigationController alloc] initWithRootViewController:NSClassFromString(@"ContainerViewController").new];
+//    [rootVC addChildViewController:NSClassFromString(@"ViewController").new];
+    self.window.rootViewController = rootVC;
     [self.window makeKeyAndVisible];
     [[UINavigationBar appearance] setHidden:YES];
     return YES;

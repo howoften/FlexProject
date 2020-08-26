@@ -1,0 +1,57 @@
+[
+    {
+        "directory": "/Users/liujiang/Desktop/FlexLayoutProj",
+        "command": "clang   -c /Users/liujiang/Desktop/FlexLayoutProj/Pods/Yoga/yoga/YGNode.cpp",
+        "file": "/Users/liujiang/Desktop/FlexLayoutProj/Pods/Yoga/yoga/YGNode.cpp"
+    },
+    {
+        "directory": "/Users/liujiang/Desktop/FlexLayoutProj",
+        "command": "clang   -c /Users/liujiang/Desktop/FlexLayoutProj/Pods/Yoga/yoga/YGConfig.cpp",
+        "file": "/Users/liujiang/Desktop/FlexLayoutProj/Pods/Yoga/yoga/YGConfig.cpp"
+    },
+    {
+        "directory": "/Users/liujiang/Desktop/FlexLayoutProj",
+        "command": "clang   -c /Users/liujiang/Desktop/FlexLayoutProj/Pods/Yoga/yoga/YGValue.cpp",
+        "file": "/Users/liujiang/Desktop/FlexLayoutProj/Pods/Yoga/yoga/YGValue.cpp"
+    },
+    {
+        "directory": "/Users/liujiang/Desktop/FlexLayoutProj",
+        "command": "clang   -c /Users/liujiang/Desktop/FlexLayoutProj/Pods/Yoga/yoga/YGEnums.cpp",
+        "file": "/Users/liujiang/Desktop/FlexLayoutProj/Pods/Yoga/yoga/YGEnums.cpp"
+    },
+    {
+        "directory": "/Users/liujiang/Desktop/FlexLayoutProj",
+        "command": "clang   -c /Users/liujiang/Desktop/FlexLayoutProj/Pods/Yoga/yoga/YGNodePrint.cpp",
+        "file": "/Users/liujiang/Desktop/FlexLayoutProj/Pods/Yoga/yoga/YGNodePrint.cpp"
+    },
+    {
+        "directory": "/Users/liujiang/Desktop/FlexLayoutProj",
+        "command": "clang   -c /Users/liujiang/Desktop/FlexLayoutProj/Pods/Yoga/yoga/Yoga.cpp",
+        "file": "/Users/liujiang/Desktop/FlexLayoutProj/Pods/Yoga/yoga/Yoga.cpp"
+    },
+    {
+        "directory": "/Users/liujiang/Desktop/FlexLayoutProj",
+        "command": "clang   -c /Users/liujiang/Desktop/FlexLayoutProj/Pods/Yoga/yoga/YGMarker.cpp",
+        "file": "/Users/liujiang/Desktop/FlexLayoutProj/Pods/Yoga/yoga/YGMarker.cpp"
+    },
+    {
+        "directory": "/Users/liujiang/Desktop/FlexLayoutProj",
+        "command": "clang   -c /Users/liujiang/Desktop/FlexLayoutProj/Pods/Yoga/yoga/YGStyle.cpp",
+        "file": "/Users/liujiang/Desktop/FlexLayoutProj/Pods/Yoga/yoga/YGStyle.cpp"
+    },
+    {
+        "directory": "/Users/liujiang/Desktop/FlexLayoutProj",
+        "command": "clang   -c /Users/liujiang/Desktop/FlexLayoutProj/Pods/Yoga/yoga/YGLayout.cpp",
+        "file": "/Users/liujiang/Desktop/FlexLayoutProj/Pods/Yoga/yoga/YGLayout.cpp"
+    },
+    {
+        "directory": "/Users/liujiang/Desktop/FlexLayoutProj",
+        "command": "clang   -c /Users/liujiang/Desktop/FlexLayoutProj/Pods/Yoga/yoga/Utils.cpp",
+        "file": "/Users/liujiang/Desktop/FlexLayoutProj/Pods/Yoga/yoga/Utils.cpp"
+    },
+    {
+        "directory": "/Users/liujiang/Desktop/FlexLayoutProj",
+        "command": "clang   -c /Users/liujiang/Desktop/FlexLayoutProj/Pods/Yoga/yoga/log.cpp",
+        "file": "/Users/liujiang/Desktop/FlexLayoutProj/Pods/Yoga/yoga/log.cpp"
+    }
+]

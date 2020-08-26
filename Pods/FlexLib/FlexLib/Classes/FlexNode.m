@@ -200,8 +200,11 @@ void FlexSetViewAttr(UIView* view,
     NSMethodSignature* sig = [[view class] instanceMethodSignatureForSelector:sel];
     if(sig == nil)
     {
-        NSLog(@"Flexbox: %@ no method %@",[view class],methodDesc);
-        return ;
+        sig = [owner.class instanceMethodSignatureForSelector:sel];
+        if(sig == nil) {
+            NSLog(@"Flexbox: %@ no method %@",[view class],methodDesc);
+            return ;
+        }
     }
     
     attrValue = FlexProcessAttrValue(attrName,attrValue, owner);
@@ -209,7 +212,7 @@ void FlexSetViewAttr(UIView* view,
     @try{
         
         NSInvocation* inv = [NSInvocation invocationWithMethodSignature:sig] ;
-        [inv setTarget:view];
+        [inv setTarget:[view respondsToSelector:sel] ? view : owner];
         [inv setSelector:sel];
         [inv setArgument:&attrValue atIndex:2];
         [inv setArgument:&owner atIndex:3];
@@ -328,7 +331,18 @@ void FlexApplyLayoutParam(YGLayout* layout,
         value = [value stringByReplacingOccurrencesOfString:originStr withString:[NSString stringWithFormat:@"%f", CGRectGetHeight([UIApplication sharedApplication].statusBarFrame)+[replacedStr floatValue]]];
         
     }
-    
+    NSString *regExpr1 = @"homeIndicatorAddedTo\\([+-]*\\d*\\.{0,1}\\d*\\)";
+    NSRange range1 = [value rangeOfString:regExpr1 options:NSRegularExpressionSearch];
+    if (range1.location != NSNotFound) {
+        NSString *originStr = [value substringWithRange:range1];
+        NSMutableString *replacedStr = [originStr mutableCopy];
+        [replacedStr replaceCharactersInRange:[replacedStr rangeOfString:@"homeIndicatorAddedTo("] withString:@""];
+        [replacedStr replaceCharactersInRange:[replacedStr rangeOfString:@")"] withString:@""];
+        
+        CGFloat homeIndicatorHeight = ([[UIDevice currentDevice]userInterfaceIdiom]==UIUserInterfaceIdiomPhone && @available(iOS 11.0, *) && [UIApplication sharedApplication].delegate.window.safeAreaInsets.bottom > 0) ? 34 : 0;
+        value = [value stringByReplacingOccurrencesOfString:originStr withString:[NSString stringWithFormat:@"%f", homeIndicatorHeight+[replacedStr floatValue]]];
+        
+    }
     
     if( [@"margin" compare:key options:NSLiteralSearch]==NSOrderedSame){
         
@@ -407,7 +421,7 @@ void FlexApplyLayoutParam(YGLayout* layout,
         NSLog(@"Flexbox: %@ is not child class of UIView.", self.viewClassName);
         return nil;
     }
-    
+    self.owner = owner;
     UIView* view = [owner createView:cls Name:self.name];
     if(view == nil)
     {
@@ -424,6 +438,7 @@ void FlexApplyLayoutParam(YGLayout* layout,
             return nil;
         }
     }
+    view.node = self;
     
     if(self.name.length>0){
         @try{
@@ -440,18 +455,41 @@ void FlexApplyLayoutParam(YGLayout* layout,
     }
     
     if(self.onPress.length>0){
-        SEL sel = NSSelectorFromString(self.onPress);
-        if(sel!=nil){
-            if([owner respondsToSelector:sel]){
-                UITapGestureRecognizer *tap=[[UITapGestureRecognizer alloc]initWithTarget:owner action:sel];
-                tap.cancelsTouchesInView = NO;
-                tap.delaysTouchesBegan = NO;
-                [view addGestureRecognizer:tap];
-            }else{
-                NSLog(@"Flexbox: owner %@ not respond %@", [owner class] , self.onPress);
+        NSString *regularExpr = @"^(?=[a-zA-Z_]+)[a-zA-Z_0-9]*(\(.*\)|[a-zA-Z_0-9]*)$";
+        NSRange funcRange = [self.onPress rangeOfString:regularExpr options:NSRegularExpressionSearch];
+        if(funcRange.location != NSNotFound){
+            NSString *paramRegex = @"\\(.*\\)$";
+            NSRange paramRange = [self.onPress rangeOfString:paramRegex options:NSRegularExpressionSearch];
+            NSString *funcName = self.onPress;
+            NSString *paramText = @"";
+            if (paramRange.location != NSNotFound) {
+                paramText = [self.onPress substringWithRange:paramRange];
+                funcName = [funcName stringByReplacingOccurrencesOfString:paramText withString:@""];
+                //去掉括号
+                paramText = [paramText substringFromIndex:1];
+                paramText = [paramText substringToIndex:paramText.length-1];
             }
-        }else{
-            NSLog(@"Flexbox: wrong onPress name %@", self.onPress);
+            if (paramText.length > 0) {
+                funcName = [funcName stringByAppendingString:@":"];
+            }
+            SEL sel = NSSelectorFromString(funcName);
+            
+            if(sel!=nil){
+                if([owner respondsToSelector:sel]){
+                    if ([view isKindOfClass:[UIControl class]]) {
+                        [(UIControl *)view addTarget:self action:@selector(onTap) forControlEvents:UIControlEventTouchUpInside];
+                    }else {
+                        UITapGestureRecognizer *tap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(onTap)];
+//                        tap.cancelsTouchesInView = NO;
+//                        tap.delaysTouchesBegan = NO;
+                        [view addGestureRecognizer:tap];
+                    }
+                }else{
+                    NSLog(@"Flexbox: owner %@ not respond %@", [owner class] , self.onPress);
+                }
+            }else{
+                NSLog(@"Flexbox: wrong onPress name %@", self.onPress);
+            }
         }
     }
     
@@ -521,7 +559,61 @@ void FlexApplyLayoutParam(YGLayout* layout,
     
     return view;
 }
-
+- (void)onTap {
+    NSString *regularExpr = @"^(?=[a-zA-Z_]+)[a-zA-Z_0-9]*(\(.*\)|[a-zA-Z_0-9]*)$";
+    NSRange funcRange = [self.onPress rangeOfString:regularExpr options:NSRegularExpressionSearch];
+    if(funcRange.location != NSNotFound){
+        NSString *paramRegex = @"\\(.*\\)$";
+        NSRange paramRange = [self.onPress rangeOfString:paramRegex options:NSRegularExpressionSearch];
+        NSString *funcName = self.onPress;
+        NSString *paramText = @"";
+        id argu1 = nil;
+        if (paramRange.location != NSNotFound) {
+            paramText = [self.onPress substringWithRange:paramRange];
+            funcName = [funcName stringByReplacingOccurrencesOfString:paramText withString:@""];
+            //去掉括号
+            paramText = [paramText substringFromIndex:1];
+            paramText = [paramText substringToIndex:paramText.length-1];
+        }
+        if (paramText.length > 0) {
+            funcName = [funcName stringByAppendingString:@":"];
+            NSString *numRegex = @"^[+-]*\\d*\\.{0,1}\\d*$";
+            if ([paramText caseInsensitiveCompare:@"YES"] == NSOrderedSame || [paramText caseInsensitiveCompare:@"true"] == NSOrderedSame) {
+                argu1 = @(YES);
+            }else if ([paramText caseInsensitiveCompare:@"NO"] == NSOrderedSame || [paramText caseInsensitiveCompare:@"false"] == NSOrderedSame) {
+                argu1 = @(NO);
+            }else if ([paramText rangeOfString:numRegex options:NSRegularExpressionSearch].location != NSNotFound) {
+                if ([paramText containsString:@"."]) {
+                    argu1 = @([paramText floatValue]);
+                }else {
+                    argu1 = @([paramText integerValue]);
+                }
+            }else {
+                argu1 = paramText;
+            }
+        }
+        SEL sel = NSSelectorFromString(funcName);
+        if(sel!=nil){
+            if([_owner respondsToSelector:sel]){
+                char *cType = "v@:";
+                if (paramText.length > 0) {
+                    cType = "v@:@";
+                }
+                NSInvocation *invoc = [NSInvocation invocationWithMethodSignature:[NSMethodSignature signatureWithObjCTypes:cType]];
+                invoc.target = _owner;
+                invoc.selector = sel;
+                if (nil != argu1) {
+                    [invoc setArgument:&argu1 atIndex:2];
+                }
+                [invoc invoke];
+              
+            }
+        }
+    }
+}
+- (void)dealloc {
+    
+}
 #pragma mark - build / parse
 //用逗号分隔
 +(NSArray*)seperateByComma:(NSString*)str
@@ -999,9 +1091,14 @@ float FlexGetScaleOffset(void)
 }
 
 #pragma mark - Owner overridable functions
-
+#import <objc/runtime.h>
 @implementation NSObject (Flex)
-
+- (void)setNode:(FlexNode *)node {
+    objc_setAssociatedObject(self, @selector(node), node, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+- (FlexNode *)node {
+    return objc_getAssociatedObject(self, @selector(node));
+}
 -(NSData*)loadXmlLayoutData:(NSString*)flexname
 {
     return nil;

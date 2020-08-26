@@ -179,7 +179,6 @@ FLEXSET(showShadowLine) {
         invoc.selector = _selectorForRightButton;
         [invoc invoke];
     }
-//    [FlexHttpVC reloadFlexView];
 }
 - (void)setBackgroundColor:(UIColor *)backgroundColor {
     _contentView.backgroundColor = backgroundColor;

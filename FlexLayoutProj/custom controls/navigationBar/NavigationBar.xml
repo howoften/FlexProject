@@ -5,7 +5,5 @@
         <UILabel name="_titleLabel" layout="maxWidth:110 height:43.7" attr="text:title,color:black, fontSize:medium|18"/>
         <UIButton name="_rightItem" onPress="rightButtonClick" layout="maxWidth:70" attr="title:reload,color:black"/>
     </UIView>
-    <UIView name="_bottomLine" layout="flexGrow:1" attr="bgColor:#000000">
-    
-    </UIView>
+    <UIView name="_bottomLine" layout="flexGrow:1" attr="bgColor:#000000"/>
 </UIView>

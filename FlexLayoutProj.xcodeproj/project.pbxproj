@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		0BA8B034ADD283A42482404D /* Pods_FlexLayoutProjTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F54BE570D0447719A5E7CAC8 /* Pods_FlexLayoutProjTests.framework */; };
+		2D3B1C1B24F4DE6E00572B9A /* TabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D3B1C1A24F4DE6E00572B9A /* TabBar.m */; };
+		2D3B1C1D24F4DEC800572B9A /* TabBar.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2D3B1C1C24F4DEC800572B9A /* TabBar.xml */; };
+		2D54476C24F633A90066FB4F /* ViewController1.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D54476B24F633A90066FB4F /* ViewController1.m */; };
+		2D54476E24F633C70066FB4F /* ViewController1.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2D54476D24F633C70066FB4F /* ViewController1.xml */; };
+		2D54477124F634D10066FB4F /* ContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D54477024F634D10066FB4F /* ContainerViewController.m */; };
+		2D54477324F6360B0066FB4F /* ContainerViewController.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2D54477224F6360B0066FB4F /* ContainerViewController.xml */; };
 		2DBB448424ECFC950033C838 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBB448324ECFC950033C838 /* AppDelegate.m */; };
 		2DBB449124ECFC960033C838 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DBB449024ECFC960033C838 /* Assets.xcassets */; };
 		2DBB449724ECFC960033C838 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBB449624ECFC960033C838 /* main.m */; };
@@ -41,6 +47,15 @@
 
 /* Begin PBXFileReference section */
 		17936ECFBA364679933819BC /* Pods-FlexLayoutProj-FlexLayoutProjUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlexLayoutProj-FlexLayoutProjUITests.release.xcconfig"; path = "Target Support Files/Pods-FlexLayoutProj-FlexLayoutProjUITests/Pods-FlexLayoutProj-FlexLayoutProjUITests.release.xcconfig"; sourceTree = "<group>"; };
+		2D3B1C1924F4DE6E00572B9A /* TabBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TabBar.h; sourceTree = "<group>"; };
+		2D3B1C1A24F4DE6E00572B9A /* TabBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TabBar.m; sourceTree = "<group>"; };
+		2D3B1C1C24F4DEC800572B9A /* TabBar.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = TabBar.xml; sourceTree = "<group>"; };
+		2D54476A24F633A90066FB4F /* ViewController1.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController1.h; sourceTree = "<group>"; };
+		2D54476B24F633A90066FB4F /* ViewController1.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController1.m; sourceTree = "<group>"; };
+		2D54476D24F633C70066FB4F /* ViewController1.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ViewController1.xml; sourceTree = "<group>"; };
+		2D54476F24F634D00066FB4F /* ContainerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContainerViewController.h; sourceTree = "<group>"; };
+		2D54477024F634D10066FB4F /* ContainerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContainerViewController.m; sourceTree = "<group>"; };
+		2D54477224F6360B0066FB4F /* ContainerViewController.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ContainerViewController.xml; sourceTree = "<group>"; };
 		2DBB447F24ECFC950033C838 /* FlexLayoutProj.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlexLayoutProj.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DBB448224ECFC950033C838 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2DBB448324ECFC950033C838 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -98,6 +113,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2D3B1C1724F4DE3B00572B9A /* navigationBar */ = {
+			isa = PBXGroup;
+			children = (
+				2DBB450824EE45320033C838 /* NavigationBar.h */,
+				2DBB450924EE45320033C838 /* NavigationBar.m */,
+				2DBB450B24EE45930033C838 /* NavigationBar.xml */,
+			);
+			path = navigationBar;
+			sourceTree = "<group>";
+		};
+		2D3B1C1824F4DE4C00572B9A /* tabBar */ = {
+			isa = PBXGroup;
+			children = (
+				2D3B1C1924F4DE6E00572B9A /* TabBar.h */,
+				2D3B1C1A24F4DE6E00572B9A /* TabBar.m */,
+				2D3B1C1C24F4DEC800572B9A /* TabBar.xml */,
+			);
+			path = tabBar;
+			sourceTree = "<group>";
+		};
 		2DBB447624ECFC950033C838 = {
 			isa = PBXGroup;
 			children = (
@@ -125,9 +160,15 @@
 			children = (
 				2DBB448224ECFC950033C838 /* AppDelegate.h */,
 				2DBB448324ECFC950033C838 /* AppDelegate.m */,
+				2D54476F24F634D00066FB4F /* ContainerViewController.h */,
+				2D54477024F634D10066FB4F /* ContainerViewController.m */,
+				2D54477224F6360B0066FB4F /* ContainerViewController.xml */,
 				2DBB44FE24ED21410033C838 /* ViewController.h */,
 				2DBB450024ED21410033C838 /* ViewController.m */,
 				2DBB44FF24ED21410033C838 /* ViewController.xml */,
+				2D54476A24F633A90066FB4F /* ViewController1.h */,
+				2D54476B24F633A90066FB4F /* ViewController1.m */,
+				2D54476D24F633C70066FB4F /* ViewController1.xml */,
 				2DBB451224EFD8490033C838 /* custom controls */,
 				2DBB449024ECFC960033C838 /* Assets.xcassets */,
 				2DBB450524EE18840033C838 /* Launch Screen.storyboard */,
@@ -158,9 +199,8 @@
 		2DBB451224EFD8490033C838 /* custom controls */ = {
 			isa = PBXGroup;
 			children = (
-				2DBB450824EE45320033C838 /* NavigationBar.h */,
-				2DBB450924EE45320033C838 /* NavigationBar.m */,
-				2DBB450B24EE45930033C838 /* NavigationBar.xml */,
+				2D3B1C1824F4DE4C00572B9A /* tabBar */,
+				2D3B1C1724F4DE3B00572B9A /* navigationBar */,
 			);
 			path = "custom controls";
 			sourceTree = "<group>";
@@ -296,9 +336,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D54476E24F633C70066FB4F /* ViewController1.xml in Resources */,
+				2D54477324F6360B0066FB4F /* ContainerViewController.xml in Resources */,
 				2DBB450624EE18840033C838 /* Launch Screen.storyboard in Resources */,
 				2DBB450C24EE45930033C838 /* NavigationBar.xml in Resources */,
 				2DBB450124ED21410033C838 /* ViewController.xml in Resources */,
+				2D3B1C1D24F4DEC800572B9A /* TabBar.xml in Resources */,
 				2DBB449124ECFC960033C838 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -427,7 +470,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D3B1C1B24F4DE6E00572B9A /* TabBar.m in Sources */,
 				2DBB450224ED21410033C838 /* ViewController.m in Sources */,
+				2D54477124F634D10066FB4F /* ContainerViewController.m in Sources */,
+				2D54476C24F633A90066FB4F /* ViewController1.m in Sources */,
 				2DBB449724ECFC960033C838 /* main.m in Sources */,
 				2DBB448424ECFC950033C838 /* AppDelegate.m in Sources */,
 				2DBB450A24EE45320033C838 /* NavigationBar.m in Sources */,

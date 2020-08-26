@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<UIView layout="flex:1, flexDirection:col, justifyContent:space-between, margin:0" attr="bgColor:white">
+    <NavigationBar layout="height:statusBarAddedTo(44), flexGrow:0, flexShrink:0" attr="title:另一页, titleFont:medium|18, showShadowLine:true, rightButtonTitle:'reload', rightButtonTitleFont:16, pressAtRightBarButton:rightBarButtonClick, leftButtonTitle:'back', leftButtonTitleFont:16, pressAtLeftBarButton:leftBarButtonClick"/>
+        <FlexScrollView layout="flex:1, flexDirection:col" attr="vertScroll:true, bgColor:#47B15C">
+            
+        </FlexScrollView>
+</UIView>

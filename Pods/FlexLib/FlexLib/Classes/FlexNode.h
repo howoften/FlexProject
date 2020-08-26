@@ -99,6 +99,7 @@ FlexMapColor FlexGetMapColor(void);
 @property (nonatomic, strong) NSString* viewClassName;
 @property (nonatomic, strong) NSString* name;
 @property (nonatomic, strong) NSString* onPress;
+@property (nonatomic, weak) id owner;
 @property (nonatomic, strong) NSArray<FlexAttr*>* layoutParams;
 @property (nonatomic, strong) NSArray<FlexAttr*>* viewAttrs;
 @property (nonatomic, strong) NSArray<FlexNode*>* children;
@@ -119,6 +120,7 @@ FlexMapColor FlexGetMapColor(void);
 @end
 
 @interface NSObject (Flex)
+@property (nonatomic, strong)FlexNode *node;
 
 //load xml layout data in owner
 -(NSData*)loadXmlLayoutData:(NSString*)flexname;
