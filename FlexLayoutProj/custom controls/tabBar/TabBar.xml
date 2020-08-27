@@ -1,22 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <UIView name ="_contentView" layout="display:flex, flexDirection:col, width:100%, height:homeIndicatorAddedTo(49)" attr="bgColor:#f7f7f7">
     <UIView name="" layout="width:100%, height:0.3" attr="bgColor:#000000"/>
-    <UIView layout="display:flex, flexDirection:row, justifyContent:space-between, alignItems:center,  height:49, margin:0/0.3/0/0" attr="bgColor:#f7f7f7">
-        <UIView layout="flex:1, flexDirection:col, justifyContent:center, alignItems:center, height:100%" onPress="clickAt(0)" attr="">
-            <UIImageView attr="source:"/>
-            <UILabel name="" layout="" attr="fontSize:14,color:#333333,lineBreakMode:truncatingTail,linesNum:1,text:item"/>
-        </UIView>
-        <UIView layout="flex:1, flexDirection:col, justifyContent:center, alignItems:center, height:100%" onPress="clickAt(1)" attr="">
-            <UIImageView attr="source:"/>
-            <UILabel name="" layout="" attr="fontSize:14,color:#333333,lineBreakMode:truncatingTail,linesNum:1,text:item"/>
-        </UIView>
-        <UIView layout="flex:1, flexDirection:col, justifyContent:center, alignItems:center, height:100%" onPress="clickAt(2)" attr="">
-            <UIImageView attr="source:"/>
-            <UILabel name="" layout="" attr="fontSize:14,color:#333333,lineBreakMode:truncatingTail,linesNum:1,text:item"/>
-        </UIView>
-        <UIView layout="flex:1, flexDirection:col, justifyContent:center, alignItems:center, height:100%" onPress="clickAt(3)" attr="">
-            <UIImageView attr="source:"/>
-            <UILabel name="" layout="" attr="fontSize:14,color:#333333,lineBreakMode:truncatingTail,linesNum:1,text:item"/>
-        </UIView>
+    <UIView name="_itemsBackgroundView" layout="display:flex, flexDirection:row, justifyContent:space-between, alignItems:center,  height:49, margin:0/0.3/0/0" attr="bgColor:#f7f7f7">
+        <TabBarButton layout="flex:1" onPress="clickAt(0)"/>
+        <TabBarButton layout="flex:1" onPress="clickAt(1)"/>
+        <TabBarButton layout="flex:1" onPress="clickAt(2)"/>
+        <TabBarButton layout="flex:1" onPress="clickAt(3)"/>
     </UIView>
 </UIView>

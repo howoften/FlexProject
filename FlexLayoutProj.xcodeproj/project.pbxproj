@@ -14,6 +14,9 @@
 		2D54476E24F633C70066FB4F /* ViewController1.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2D54476D24F633C70066FB4F /* ViewController1.xml */; };
 		2D54477124F634D10066FB4F /* ContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D54477024F634D10066FB4F /* ContainerViewController.m */; };
 		2D54477324F6360B0066FB4F /* ContainerViewController.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2D54477224F6360B0066FB4F /* ContainerViewController.xml */; };
+		2D54477724F74AC50066FB4F /* TabBarButton.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2D54477524F74AC50066FB4F /* TabBarButton.xml */; };
+		2D54477824F74AC50066FB4F /* TabBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D54477624F74AC50066FB4F /* TabBarButton.m */; };
+		2D54477B24F752BA0066FB4F /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D54477A24F752BA0066FB4F /* UIColor+Hex.m */; };
 		2DBB448424ECFC950033C838 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBB448324ECFC950033C838 /* AppDelegate.m */; };
 		2DBB449124ECFC960033C838 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DBB449024ECFC960033C838 /* Assets.xcassets */; };
 		2DBB449724ECFC960033C838 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBB449624ECFC960033C838 /* main.m */; };
@@ -56,6 +59,11 @@
 		2D54476F24F634D00066FB4F /* ContainerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContainerViewController.h; sourceTree = "<group>"; };
 		2D54477024F634D10066FB4F /* ContainerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContainerViewController.m; sourceTree = "<group>"; };
 		2D54477224F6360B0066FB4F /* ContainerViewController.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ContainerViewController.xml; sourceTree = "<group>"; };
+		2D54477424F74AC50066FB4F /* TabBarButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TabBarButton.h; sourceTree = "<group>"; };
+		2D54477524F74AC50066FB4F /* TabBarButton.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = TabBarButton.xml; sourceTree = "<group>"; };
+		2D54477624F74AC50066FB4F /* TabBarButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TabBarButton.m; sourceTree = "<group>"; };
+		2D54477924F752BA0066FB4F /* UIColor+Hex.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
+		2D54477A24F752BA0066FB4F /* UIColor+Hex.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
 		2DBB447F24ECFC950033C838 /* FlexLayoutProj.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlexLayoutProj.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DBB448224ECFC950033C838 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2DBB448324ECFC950033C838 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -129,6 +137,9 @@
 				2D3B1C1924F4DE6E00572B9A /* TabBar.h */,
 				2D3B1C1A24F4DE6E00572B9A /* TabBar.m */,
 				2D3B1C1C24F4DEC800572B9A /* TabBar.xml */,
+				2D54477424F74AC50066FB4F /* TabBarButton.h */,
+				2D54477624F74AC50066FB4F /* TabBarButton.m */,
+				2D54477524F74AC50066FB4F /* TabBarButton.xml */,
 			);
 			path = tabBar;
 			sourceTree = "<group>";
@@ -165,6 +176,8 @@
 				2D54477224F6360B0066FB4F /* ContainerViewController.xml */,
 				2DBB44FE24ED21410033C838 /* ViewController.h */,
 				2DBB450024ED21410033C838 /* ViewController.m */,
+				2D54477924F752BA0066FB4F /* UIColor+Hex.h */,
+				2D54477A24F752BA0066FB4F /* UIColor+Hex.m */,
 				2DBB44FF24ED21410033C838 /* ViewController.xml */,
 				2D54476A24F633A90066FB4F /* ViewController1.h */,
 				2D54476B24F633A90066FB4F /* ViewController1.m */,
@@ -343,6 +356,7 @@
 				2DBB450124ED21410033C838 /* ViewController.xml in Resources */,
 				2D3B1C1D24F4DEC800572B9A /* TabBar.xml in Resources */,
 				2DBB449124ECFC960033C838 /* Assets.xcassets in Resources */,
+				2D54477724F74AC50066FB4F /* TabBarButton.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -471,8 +485,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D3B1C1B24F4DE6E00572B9A /* TabBar.m in Sources */,
+				2D54477824F74AC50066FB4F /* TabBarButton.m in Sources */,
 				2DBB450224ED21410033C838 /* ViewController.m in Sources */,
 				2D54477124F634D10066FB4F /* ContainerViewController.m in Sources */,
+				2D54477B24F752BA0066FB4F /* UIColor+Hex.m in Sources */,
 				2D54476C24F633A90066FB4F /* ViewController1.m in Sources */,
 				2DBB449724ECFC960033C838 /* main.m in Sources */,
 				2DBB448424ECFC950033C838 /* AppDelegate.m in Sources */,

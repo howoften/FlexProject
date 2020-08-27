@@ -10,7 +10,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface TabBar : FlexCustomBaseView
-
+- (void)selectAt:(NSInteger)index;
 @end
 
 NS_ASSUME_NONNULL_END

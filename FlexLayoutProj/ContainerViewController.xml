@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<UIView layout="flex:1, flexDirection:col, justifyContent:space-between, margin:0" attr="bgColor:white, childNames:ViewController/ViewController1">
+<UIView layout="flex:1, flexDirection:col, justifyContent:space-between, margin:0" attr="bgColor:white, childNames:ViewController/ViewController1, selectAtIndex:0">
     <UIView name="_contentView" layout="flex:1, flexGrow:1" attr="bgColor:#f2f2f2">
-    
+
     </UIView>
     <!-- </UIView> -->
-        <TabBar layout="height:homeIndicatorAddedTo(49), flexGrow:0, flexShrink:0" attr="delegateName:ContainerViewController"/>
-
+    <TabBar name="_tabBar" layout="height:homeIndicatorAddedTo(49), flexGrow:0, flexShrink:0" attr="delegateName:ContainerViewController, normalColor:#202020, selectedColor:#0000FF"/>
 </UIView>

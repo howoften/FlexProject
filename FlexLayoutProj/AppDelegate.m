@@ -16,11 +16,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     FlexRestorePreviewSetting();
-//    FlexSetPreviewBaseUrl(@"")
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-//    UITabBarController *rootController = [[UITabBarController alloc] init];
-//    NSArray *viewTitles = @[@""];
-//    [rootController ]
 //
     UINavigationController *rootVC = [[UINavigationController alloc] initWithRootViewController:NSClassFromString(@"ContainerViewController").new];
 //    [rootVC addChildViewController:NSClassFromString(@"ViewController").new];

@@ -6,10 +6,12 @@
 //
 
 #import "ContainerViewController.h"
-
+#import "TabBar.h"
+#define contentRect CGRectMake(0, 0, CGRectGetWidth([UIScreen mainScreen].bounds), CGRectGetHeight([UIScreen mainScreen].bounds)-([UIApplication sharedApplication].statusBarFrame.size.height > 20 ? 83 : 49))
 @interface ContainerViewController ()
 {
     UIView *_contentView;
+    TabBar *_tabBar;
     NSArray *childVCNames;
     NSInteger selectIndex;
 }
@@ -27,12 +29,13 @@
             [self addChildViewController:child];
             selectIndex = MIN(childVCNames.count-1, selectIndex);
             if (i == selectIndex) {
-                child.view.frame = CGRectMake(0, 0, CGRectGetWidth([UIScreen mainScreen].bounds), CGRectGetHeight([UIScreen mainScreen].bounds)-([UIApplication sharedApplication].statusBarFrame.size.height > 20 ? 83 : 49));
+                child.view.frame = contentRect;
                 [_contentView addSubview:child.view];
                 [child didMoveToParentViewController:self];
             }
         }
     }
+    [_tabBar selectAt:selectIndex];
 }
 FLEXSET(childNames)
 {
@@ -49,11 +52,13 @@ FLEXSET(selectAtIndex) {
 - (void)tabBar:(UIView *)tabBar didClickAt:(NSInteger)index {
     if (index < self.childViewControllers.count && index != selectIndex) {
         UIViewController *child = self.childViewControllers[index];
-        child.view.frame = CGRectMake(0, 0, CGRectGetWidth([UIScreen mainScreen].bounds), CGRectGetHeight([UIScreen mainScreen].bounds)-([UIApplication sharedApplication].statusBarFrame.size.height > 20 ? 83 : 49));
+        child.view.frame = contentRect;
         [UIView transitionFromView:self.childViewControllers[selectIndex].view toView:child.view duration:0.25 options:UIViewAnimationOptionTransitionCrossDissolve completion:^(BOOL finished) {
+            [self.childViewControllers[selectIndex].view removeFromSuperview];
             [_contentView addSubview:child.view];
             [child didMoveToParentViewController:self];
             selectIndex = index;
+            [_tabBar selectAt:selectIndex];
         }];
     }
 }
