@@ -6,6 +6,7 @@
 //
 
 #import "ViewController.h"
+#import <FlexLibPreview.h>
 @implementation ViewController
 
 - (void)viewDidLoad {
@@ -16,7 +17,7 @@
     return UIEdgeInsetsMake(0, 0, 0, 0);
 }
 - (void)leftBarButtonClick {
-
+    [FlexSetPreviewVC presentInVC:self.navigationController];
 }
 - (void)rightBarButtonClick {
     [self reloadFlexView];

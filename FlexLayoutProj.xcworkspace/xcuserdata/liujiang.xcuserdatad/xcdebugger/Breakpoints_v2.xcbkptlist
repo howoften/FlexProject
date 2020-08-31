@@ -39,16 +39,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "FE7D40A9-78D9-455C-800B-A5EA07602981"
-            shouldBeEnabled = "No"
+            uuid = "F467D2C7-6EDB-40CD-A76D-67F17D5C1C0F"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Pods/FlexLib/FlexLib/Classes/FlexNode.m"
+            filePath = "Pods/FlexLib/FlexLib/Classes/FlexStyleMgr.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "483"
-            endingLineNumber = "483"
-            landmarkName = "-buildViewTree:RootView:"
+            startingLineNumber = "140"
+            endingLineNumber = "140"
+            landmarkName = "-loadFromFile:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -17,6 +17,8 @@
 		2D54477724F74AC50066FB4F /* TabBarButton.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2D54477524F74AC50066FB4F /* TabBarButton.xml */; };
 		2D54477824F74AC50066FB4F /* TabBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D54477624F74AC50066FB4F /* TabBarButton.m */; };
 		2D54477B24F752BA0066FB4F /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D54477A24F752BA0066FB4F /* UIColor+Hex.m */; };
+		2D54477E24F7AB9B0066FB4F /* IntroductionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D54477D24F7AB9B0066FB4F /* IntroductionView.m */; };
+		2D54478024F7ABBD0066FB4F /* IntroductionView.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2D54477F24F7ABBD0066FB4F /* IntroductionView.xml */; };
 		2DBB448424ECFC950033C838 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBB448324ECFC950033C838 /* AppDelegate.m */; };
 		2DBB449124ECFC960033C838 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DBB449024ECFC960033C838 /* Assets.xcassets */; };
 		2DBB449724ECFC960033C838 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBB449624ECFC960033C838 /* main.m */; };
@@ -64,6 +66,9 @@
 		2D54477624F74AC50066FB4F /* TabBarButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TabBarButton.m; sourceTree = "<group>"; };
 		2D54477924F752BA0066FB4F /* UIColor+Hex.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
 		2D54477A24F752BA0066FB4F /* UIColor+Hex.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
+		2D54477C24F7AB9B0066FB4F /* IntroductionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntroductionView.h; sourceTree = "<group>"; };
+		2D54477D24F7AB9B0066FB4F /* IntroductionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntroductionView.m; sourceTree = "<group>"; };
+		2D54477F24F7ABBD0066FB4F /* IntroductionView.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = IntroductionView.xml; sourceTree = "<group>"; };
 		2DBB447F24ECFC950033C838 /* FlexLayoutProj.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlexLayoutProj.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DBB448224ECFC950033C838 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2DBB448324ECFC950033C838 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -171,6 +176,9 @@
 			children = (
 				2DBB448224ECFC950033C838 /* AppDelegate.h */,
 				2DBB448324ECFC950033C838 /* AppDelegate.m */,
+				2D54477C24F7AB9B0066FB4F /* IntroductionView.h */,
+				2D54477D24F7AB9B0066FB4F /* IntroductionView.m */,
+				2D54477F24F7ABBD0066FB4F /* IntroductionView.xml */,
 				2D54476F24F634D00066FB4F /* ContainerViewController.h */,
 				2D54477024F634D10066FB4F /* ContainerViewController.m */,
 				2D54477224F6360B0066FB4F /* ContainerViewController.xml */,
@@ -353,6 +361,7 @@
 				2D54477324F6360B0066FB4F /* ContainerViewController.xml in Resources */,
 				2DBB450624EE18840033C838 /* Launch Screen.storyboard in Resources */,
 				2DBB450C24EE45930033C838 /* NavigationBar.xml in Resources */,
+				2D54478024F7ABBD0066FB4F /* IntroductionView.xml in Resources */,
 				2DBB450124ED21410033C838 /* ViewController.xml in Resources */,
 				2D3B1C1D24F4DEC800572B9A /* TabBar.xml in Resources */,
 				2DBB449124ECFC960033C838 /* Assets.xcassets in Resources */,
@@ -484,6 +493,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D54477E24F7AB9B0066FB4F /* IntroductionView.m in Sources */,
 				2D3B1C1B24F4DE6E00572B9A /* TabBar.m in Sources */,
 				2D54477824F74AC50066FB4F /* TabBarButton.m in Sources */,
 				2DBB450224ED21410033C838 /* ViewController.m in Sources */,
@@ -649,6 +659,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RJ9SHE83UJ;
 				INFOPLIST_FILE = FlexLayoutProj/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -669,6 +680,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RJ9SHE83UJ;
 				INFOPLIST_FILE = FlexLayoutProj/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

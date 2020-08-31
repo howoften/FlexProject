@@ -36,6 +36,13 @@
         }
     }
     [_tabBar selectAt:selectIndex];
+    
+    [self placeInstructionView];
+}
+- (void)placeInstructionView {
+    UIView *instruct = [NSClassFromString(@"IntroductionView") new];
+    instruct.frame = [UIScreen mainScreen].bounds;
+    [self.view addSubview:instruct];
 }
 FLEXSET(childNames)
 {

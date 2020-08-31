@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <UIView layout="flex:1, flexDirection:col, justifyContent:space-between, margin:0" attr="bgColor:white">
-    <NavigationBar layout="height:statusBarAddedTo(44), flexGrow:0, flexShrink:0" attr="title:首页, titleFont:medium|18, showShadowLine:true, rightButtonTitle:'reload', rightButtonTitleFont:16, pressAtRightBarButton:rightBarButtonClick, leftButtonTitle:'', leftButtonTitleFont:16, pressAtLeftBarButton:leftBarButtonClick"/>
+    <NavigationBar layout="height:statusBarAddedTo(44), flexGrow:0, flexShrink:0" attr="title:首页, titleFont:medium|18, showShadowLine:true, rightButtonTitle:'reload', rightButtonTitleFont:16, pressAtRightBarButton:rightBarButtonClick, leftButtonTitle:'setting', leftButtonTitleFont:16, pressAtLeftBarButton:leftBarButtonClick"/>
     <!-- <UIView layout="" attr=""> -->
         <FlexScrollView layout="flex:1, flexDirection:col" attr="vertScroll:true">
             <UIView layout="flexDirection:row, minHeight:44, justifyContent:flex-start, alignItems:center, margin:10" attr="bgColor:lightGray">
@@ -18,7 +18,7 @@
                 </FlexTouchView>
             </UIView>
             <UIView layout="display:flex, minHeight:44, flexDirection:col, justifyContent:center, alignItems:center, margin:10" attr="">
-            <UIButton layout="height:100%, width:80%" attr="bgColor:green, title:submit"></UIButton>
+            <UIButton layout="height:100%, width:80%" attr="bgColor:#4682B4, title:submit"></UIButton>
             </UIView>
         </FlexScrollView>
     <!-- </UIView> -->

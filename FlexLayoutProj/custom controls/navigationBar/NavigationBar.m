@@ -197,13 +197,24 @@ FLEXSET(showShadowLine) {
     return [self _topMostViewController:presentedVC];
 }
 - (UIViewController *)_topMostViewController:(UIViewController *)vc {
-    if ([vc isKindOfClass:[UINavigationController class]]) {
-        return [self _topMostViewController:[(UINavigationController *)vc topViewController]];
-    }else if ([vc isKindOfClass:[UITabBarController class]]) {
-        return [self _topMostViewController:[(UITabBarController *)vc selectedViewController]];
+    int viewLevel = -1;
+    UIViewController *topVC = nil;
+    if ([vc childViewControllers].count > 0) {
+        for (UIViewController *child in vc.childViewControllers) {
+            if ([child.view isDescendantOfView:vc.view]) {
+                int level = [child.view.superview.subviews indexOfObject:child.view];
+                if (level > viewLevel) {
+                    viewLevel = level;
+                    topVC = child;
+                }
+            }
+        }
+        if (topVC != nil) {
+            return [self _topMostViewController:topVC];
+        }
     }else if ([vc isKindOfClass:[UIViewController class]]) {
         return vc;
-    }else
+    }
     
         return nil;
 }

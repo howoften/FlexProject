@@ -17,6 +17,7 @@
 #import "FlexRootView.h"
 #import "FlexModalView.h"
 #import "ViewExt/UIView+Flex.h"
+#import "FlexCalculate.h"
 
 #define VIEWCLSNAME     @"viewClsName"
 #define NAME            @"name"
@@ -25,6 +26,8 @@
 #define VIEWATTRS       @"viewAttrs"
 #define CHILDREN        @"children"
 
+#define kStandardWidth 375.0
+#define kStandardHeight 667.0
 #pragma mark - Name values
 
 NSData* loadFromWanglo(NSString* resName,NSObject* owner);
@@ -186,6 +189,79 @@ void FlexSetViewAttr(UIView* view,
                      NSString* attrValue,
                      NSObject* owner)
 {
+    NSString *regExpr5 = @"ScreenWidth";
+    NSRange range5 = [attrValue rangeOfString:regExpr5 options:NSRegularExpressionSearch];
+    if (range5.location != NSNotFound) {
+        NSString *originStr = [attrValue substringWithRange:range5];
+        NSMutableString *replacedStr = [originStr mutableCopy];
+        
+        attrValue = [attrValue stringByReplacingOccurrencesOfString:originStr withString:[NSString stringWithFormat:@"%f", [UIScreen mainScreen].bounds.size.width]];
+    }
+    NSString *regExpr6 = @"ScreenHeight";
+    NSRange range6 = [attrValue rangeOfString:regExpr6 options:NSRegularExpressionSearch];
+    if (range6.location != NSNotFound) {
+        NSString *originStr = [attrValue substringWithRange:range6];
+        NSMutableString *replacedStr = [originStr mutableCopy];
+        
+        attrValue = [attrValue stringByReplacingOccurrencesOfString:originStr withString:[NSString stringWithFormat:@"%f", [UIScreen mainScreen].bounds.size.height]];
+        
+    }
+    NSString *regExpr2 = @"adaptedHorizen\\([+-]*\\d*\\.{0,1}\\d*\\)";
+    NSRange range2 = [attrValue rangeOfString:regExpr2 options:NSRegularExpressionSearch];
+    if (range2.location != NSNotFound) {
+        NSString *originStr = [attrValue substringWithRange:range2];
+        NSMutableString *replacedStr = [originStr mutableCopy];
+        [replacedStr replaceCharactersInRange:[replacedStr rangeOfString:@"adaptedHorizen("] withString:@""];
+        [replacedStr replaceCharactersInRange:[replacedStr rangeOfString:@")"] withString:@""];
+        
+        attrValue = [attrValue stringByReplacingOccurrencesOfString:originStr withString:[NSString stringWithFormat:@"%f", [replacedStr floatValue]*[UIScreen mainScreen].bounds.size.width/kStandardWidth]];
+        
+    }
+    NSString *regExpr3 = @"adaptedVertical\\([+-]*\\d*\\.{0,1}\\d*\\)";
+    NSRange range3 = [attrValue rangeOfString:regExpr3 options:NSRegularExpressionSearch];
+    if (range3.location != NSNotFound) {
+        NSString *originStr = [attrValue substringWithRange:range3];
+        NSMutableString *replacedStr = [originStr mutableCopy];
+        [replacedStr replaceCharactersInRange:[replacedStr rangeOfString:@"adaptedVertical("] withString:@""];
+        [replacedStr replaceCharactersInRange:[replacedStr rangeOfString:@")"] withString:@""];
+        
+        attrValue = [attrValue stringByReplacingOccurrencesOfString:originStr withString:[NSString stringWithFormat:@"%f", [replacedStr floatValue]*[UIScreen mainScreen].bounds.size.height/kStandardHeight]];
+        
+    }
+    NSString *regExpr = @"statusBarAddedTo\\([+-]*\\d*\\.{0,1}\\d*\\)";
+    NSRange range = [attrValue rangeOfString:regExpr options:NSRegularExpressionSearch];
+    if (range.location != NSNotFound) {
+        NSString *originStr = [attrValue substringWithRange:range];
+        NSMutableString *replacedStr = [originStr mutableCopy];
+        [replacedStr replaceCharactersInRange:[replacedStr rangeOfString:@"statusBarAddedTo("] withString:@""];
+        [replacedStr replaceCharactersInRange:[replacedStr rangeOfString:@")"] withString:@""];
+        
+        attrValue = [attrValue stringByReplacingOccurrencesOfString:originStr withString:[NSString stringWithFormat:@"%f", CGRectGetHeight([UIApplication sharedApplication].statusBarFrame)+[replacedStr floatValue]]];
+        
+    }
+    NSString *regExpr1 = @"homeIndicatorAddedTo\\([+-]*\\d*\\.{0,1}\\d*\\)";
+    NSRange range1 = [attrValue rangeOfString:regExpr1 options:NSRegularExpressionSearch];
+    if (range1.location != NSNotFound) {
+        NSString *originStr = [attrValue substringWithRange:range1];
+        NSMutableString *replacedStr = [originStr mutableCopy];
+        [replacedStr replaceCharactersInRange:[replacedStr rangeOfString:@"homeIndicatorAddedTo("] withString:@""];
+        [replacedStr replaceCharactersInRange:[replacedStr rangeOfString:@")"] withString:@""];
+        
+        CGFloat homeIndicatorHeight = ([[UIDevice currentDevice]userInterfaceIdiom]==UIUserInterfaceIdiomPhone && @available(iOS 11.0, *) && [UIApplication sharedApplication].delegate.window.safeAreaInsets.bottom > 0) ? 34 : 0;
+        attrValue = [attrValue stringByReplacingOccurrencesOfString:originStr withString:[NSString stringWithFormat:@"%f", homeIndicatorHeight+[replacedStr floatValue]]];
+        
+    }
+    NSString *regExpr4 = @"calculate\\([+\\-*/.0-9\\s\\(\\)]+\\)";
+    NSRange range4 = [attrValue rangeOfString:regExpr4 options:NSRegularExpressionSearch];
+    if (range4.location != NSNotFound) {
+        NSString *originStr = [attrValue substringWithRange:range4];
+        NSMutableString *replacedStr = [originStr mutableCopy];
+        [replacedStr replaceCharactersInRange:[replacedStr rangeOfString:@"calculate("] withString:@""];
+        [replacedStr replaceCharactersInRange:[replacedStr rangeOfString:@")"] withString:@""];
+        double result = calculate([replacedStr UTF8String]);
+        attrValue = [NSString stringWithFormat:@"%f", result];
+    }
+    
     NSString* methodDesc = [NSString stringWithFormat:@"setFlex%@:Owner:",attrName];
     
     SEL sel = NSSelectorFromString(methodDesc) ;
@@ -320,6 +396,45 @@ void FlexApplyLayoutParam(YGLayout* layout,
                           NSString* key,
                           NSString* value)
 {
+    NSString *regExpr5 = @"ScreenWidth";
+    NSRange range5 = [value rangeOfString:regExpr5 options:NSRegularExpressionSearch];
+    if (range5.location != NSNotFound) {
+        NSString *originStr = [value substringWithRange:range5];
+        NSMutableString *replacedStr = [originStr mutableCopy];
+        
+        value = [value stringByReplacingOccurrencesOfString:originStr withString:[NSString stringWithFormat:@"%f", [UIScreen mainScreen].bounds.size.width]];
+    }
+    NSString *regExpr6 = @"ScreenHeight";
+    NSRange range6 = [value rangeOfString:regExpr6 options:NSRegularExpressionSearch];
+    if (range6.location != NSNotFound) {
+        NSString *originStr = [value substringWithRange:range6];
+        NSMutableString *replacedStr = [originStr mutableCopy];
+        
+        value = [value stringByReplacingOccurrencesOfString:originStr withString:[NSString stringWithFormat:@"%f", [UIScreen mainScreen].bounds.size.height]];
+        
+    }
+    NSString *regExpr2 = @"adaptedHorizen\\([+-]*\\d*\\.{0,1}\\d*\\)";
+    NSRange range2 = [value rangeOfString:regExpr2 options:NSRegularExpressionSearch];
+    if (range2.location != NSNotFound) {
+        NSString *originStr = [value substringWithRange:range2];
+        NSMutableString *replacedStr = [originStr mutableCopy];
+        [replacedStr replaceCharactersInRange:[replacedStr rangeOfString:@"adaptedHorizen("] withString:@""];
+        [replacedStr replaceCharactersInRange:[replacedStr rangeOfString:@")"] withString:@""];
+        
+        value = [value stringByReplacingOccurrencesOfString:originStr withString:[NSString stringWithFormat:@"%f", [replacedStr floatValue]*[UIScreen mainScreen].bounds.size.width/kStandardWidth]];
+        
+    }
+    NSString *regExpr3 = @"adaptedVertical\\([+-]*\\d*\\.{0,1}\\d*\\)";
+    NSRange range3 = [value rangeOfString:regExpr3 options:NSRegularExpressionSearch];
+    if (range3.location != NSNotFound) {
+        NSString *originStr = [value substringWithRange:range3];
+        NSMutableString *replacedStr = [originStr mutableCopy];
+        [replacedStr replaceCharactersInRange:[replacedStr rangeOfString:@"adaptedVertical("] withString:@""];
+        [replacedStr replaceCharactersInRange:[replacedStr rangeOfString:@")"] withString:@""];
+        
+        value = [value stringByReplacingOccurrencesOfString:originStr withString:[NSString stringWithFormat:@"%f", [replacedStr floatValue]*[UIScreen mainScreen].bounds.size.height/kStandardHeight]];
+        
+    }
     NSString *regExpr = @"statusBarAddedTo\\([+-]*\\d*\\.{0,1}\\d*\\)";
     NSRange range = [value rangeOfString:regExpr options:NSRegularExpressionSearch];
     if (range.location != NSNotFound) {
@@ -343,7 +458,17 @@ void FlexApplyLayoutParam(YGLayout* layout,
         value = [value stringByReplacingOccurrencesOfString:originStr withString:[NSString stringWithFormat:@"%f", homeIndicatorHeight+[replacedStr floatValue]]];
         
     }
-    
+    NSString *regExpr4 = @"calculate\\([+\\-*/.0-9\\s\\(\\)]+\\)";
+    NSRange range4 = [value rangeOfString:regExpr4 options:NSRegularExpressionSearch];
+    if (range4.location != NSNotFound) {
+        NSString *originStr = [value substringWithRange:range4];
+        NSMutableString *replacedStr = [originStr mutableCopy];
+        [replacedStr replaceCharactersInRange:[replacedStr rangeOfString:@"calculate("] withString:@""];
+        [replacedStr replaceCharactersInRange:[replacedStr rangeOfString:@")"] withString:@""];
+        double result = calculate([replacedStr UTF8String]);
+        value = [NSString stringWithFormat:@"%f", result];
+    }
+   
     if( [@"margin" compare:key options:NSLiteralSearch]==NSOrderedSame){
         
         NSArray* ary = [value componentsSeparatedByString:@"/"];

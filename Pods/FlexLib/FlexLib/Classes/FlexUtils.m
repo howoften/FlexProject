@@ -138,15 +138,22 @@ UIFont* fontFromString(NSString* fontStr)
     if(fontSize<=0){
         fontSize = 17;
     }
-    
-    if([@"bold" compare:fontName]==NSOrderedSame)
-    {
-        font = [UIFont boldSystemFontOfSize:fontSize];
-    }
-    else if([@"italic" compare:fontName]==NSOrderedSame){
-        
+    if ([fontName caseInsensitiveCompare:@"light"] == NSOrderedSame) {
+        font = [UIFont systemFontOfSize:fontSize weight:UIFontWeightLight];
+    }else if ([fontName caseInsensitiveCompare:@"thin"] == NSOrderedSame) {
+        font = [UIFont systemFontOfSize:fontSize weight:UIFontWeightThin];
+    }else if ([fontName caseInsensitiveCompare:@"italic"] == NSOrderedSame) {
         font = [UIFont italicSystemFontOfSize:fontSize];
-    
+    }else if ([fontName caseInsensitiveCompare:@"regular"] == NSOrderedSame) {
+        font = [UIFont systemFontOfSize:fontSize weight:UIFontWeightRegular];
+    }else if ([fontName caseInsensitiveCompare:@"medium"] == NSOrderedSame) {
+        font = [UIFont systemFontOfSize:fontSize weight:UIFontWeightMedium];
+    }else if ([fontName caseInsensitiveCompare:@"bold"] == NSOrderedSame) {
+        font = [UIFont systemFontOfSize:fontSize weight:UIFontWeightBold];
+    }else if ([fontName caseInsensitiveCompare:@"heavy"] == NSOrderedSame) {
+        font = [UIFont systemFontOfSize:fontSize weight:UIFontWeightHeavy];
+    }else if ([fontName caseInsensitiveCompare:@"black"] == NSOrderedSame) {
+        font = [UIFont systemFontOfSize:fontSize weight:UIFontWeightBlack];
     }else{
         font = [UIFont fontWithName:fontName size:fontSize];
     }
