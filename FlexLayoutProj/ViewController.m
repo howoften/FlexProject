@@ -19,6 +19,7 @@
 - (void)leftBarButtonClick {
     [FlexSetPreviewVC presentInVC:self.navigationController];
 }
+
 - (void)rightBarButtonClick {
     [self reloadFlexView];
 }

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<UIView layout="flex:1, display:flex, flexDirection:col" attr="bgColor:white">
+<UIView layout="display:flex, flexDirection:row, justifyContent:flex-end" attr="">
+<FlexTouchView layout="width:40, height:40" attr="underlayColor:gray, bgColor:red">
+
+</FlexTouchView>
+</UIView>
+
+
+</UIView>

@@ -29,6 +29,8 @@
 		2DBB450624EE18840033C838 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DBB450524EE18840033C838 /* Launch Screen.storyboard */; };
 		2DBB450A24EE45320033C838 /* NavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBB450924EE45320033C838 /* NavigationBar.m */; };
 		2DBB450C24EE45930033C838 /* NavigationBar.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2DBB450B24EE45930033C838 /* NavigationBar.xml */; };
+		2DBFE04424FCA012007BE870 /* LoginViewController.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2DBFE04224FCA012007BE870 /* LoginViewController.xml */; };
+		2DBFE04524FCA012007BE870 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBFE04324FCA012007BE870 /* LoginViewController.m */; };
 		3E130684EAD083964BB832B8 /* Pods_FlexLayoutProj_FlexLayoutProjUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79AE86C70FA7F99F14183D0B /* Pods_FlexLayoutProj_FlexLayoutProjUITests.framework */; };
 		E0E4BDECB5E3C41DACB1F23D /* Pods_FlexLayoutProj.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76880D10A98D4AF320A0280D /* Pods_FlexLayoutProj.framework */; };
 /* End PBXBuildFile section */
@@ -88,6 +90,9 @@
 		2DBB450824EE45320033C838 /* NavigationBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NavigationBar.h; sourceTree = "<group>"; };
 		2DBB450924EE45320033C838 /* NavigationBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NavigationBar.m; sourceTree = "<group>"; };
 		2DBB450B24EE45930033C838 /* NavigationBar.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = NavigationBar.xml; sourceTree = "<group>"; };
+		2DBFE04124FCA012007BE870 /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		2DBFE04224FCA012007BE870 /* LoginViewController.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = LoginViewController.xml; sourceTree = "<group>"; };
+		2DBFE04324FCA012007BE870 /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		523681507CEC489104B0DAA9 /* Pods-FlexLayoutProj.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlexLayoutProj.debug.xcconfig"; path = "Target Support Files/Pods-FlexLayoutProj/Pods-FlexLayoutProj.debug.xcconfig"; sourceTree = "<group>"; };
 		76880D10A98D4AF320A0280D /* Pods_FlexLayoutProj.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlexLayoutProj.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		79AE86C70FA7F99F14183D0B /* Pods_FlexLayoutProj_FlexLayoutProjUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlexLayoutProj_FlexLayoutProjUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -176,6 +181,7 @@
 			children = (
 				2DBB448224ECFC950033C838 /* AppDelegate.h */,
 				2DBB448324ECFC950033C838 /* AppDelegate.m */,
+				2DF08E6024FC9AE800181AEE /* userinfo */,
 				2D54477C24F7AB9B0066FB4F /* IntroductionView.h */,
 				2D54477D24F7AB9B0066FB4F /* IntroductionView.m */,
 				2D54477F24F7ABBD0066FB4F /* IntroductionView.xml */,
@@ -184,9 +190,9 @@
 				2D54477224F6360B0066FB4F /* ContainerViewController.xml */,
 				2DBB44FE24ED21410033C838 /* ViewController.h */,
 				2DBB450024ED21410033C838 /* ViewController.m */,
+				2DBB44FF24ED21410033C838 /* ViewController.xml */,
 				2D54477924F752BA0066FB4F /* UIColor+Hex.h */,
 				2D54477A24F752BA0066FB4F /* UIColor+Hex.m */,
-				2DBB44FF24ED21410033C838 /* ViewController.xml */,
 				2D54476A24F633A90066FB4F /* ViewController1.h */,
 				2D54476B24F633A90066FB4F /* ViewController1.m */,
 				2D54476D24F633C70066FB4F /* ViewController1.xml */,
@@ -224,6 +230,16 @@
 				2D3B1C1724F4DE3B00572B9A /* navigationBar */,
 			);
 			path = "custom controls";
+			sourceTree = "<group>";
+		};
+		2DF08E6024FC9AE800181AEE /* userinfo */ = {
+			isa = PBXGroup;
+			children = (
+				2DBFE04124FCA012007BE870 /* LoginViewController.h */,
+				2DBFE04324FCA012007BE870 /* LoginViewController.m */,
+				2DBFE04224FCA012007BE870 /* LoginViewController.xml */,
+			);
+			path = userinfo;
 			sourceTree = "<group>";
 		};
 		B84C26E441DED58887697A99 /* Frameworks */ = {
@@ -359,6 +375,7 @@
 			files = (
 				2D54476E24F633C70066FB4F /* ViewController1.xml in Resources */,
 				2D54477324F6360B0066FB4F /* ContainerViewController.xml in Resources */,
+				2DBFE04424FCA012007BE870 /* LoginViewController.xml in Resources */,
 				2DBB450624EE18840033C838 /* Launch Screen.storyboard in Resources */,
 				2DBB450C24EE45930033C838 /* NavigationBar.xml in Resources */,
 				2D54478024F7ABBD0066FB4F /* IntroductionView.xml in Resources */,
@@ -502,6 +519,7 @@
 				2D54476C24F633A90066FB4F /* ViewController1.m in Sources */,
 				2DBB449724ECFC960033C838 /* main.m in Sources */,
 				2DBB448424ECFC950033C838 /* AppDelegate.m in Sources */,
+				2DBFE04524FCA012007BE870 /* LoginViewController.m in Sources */,
 				2DBB450A24EE45320033C838 /* NavigationBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

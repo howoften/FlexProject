@@ -206,29 +206,53 @@ void FlexSetViewAttr(UIView* view,
         attrValue = [attrValue stringByReplacingOccurrencesOfString:originStr withString:[NSString stringWithFormat:@"%f", [UIScreen mainScreen].bounds.size.height]];
         
     }
-    NSString *regExpr2 = @"adaptedHorizen\\([+-]*\\d*\\.{0,1}\\d*\\)";
+    NSString *regExpr2 = @"[:\\(]{0,1}[+-]{0,1}\\d*\\.{0,1}\\d*(RPx|RpX|rPX|Rpx|rPx|rpX|rpx|RPX)";
     NSRange range2 = [attrValue rangeOfString:regExpr2 options:NSRegularExpressionSearch];
     if (range2.location != NSNotFound) {
         NSString *originStr = [attrValue substringWithRange:range2];
-        NSMutableString *replacedStr = [originStr mutableCopy];
-        [replacedStr replaceCharactersInRange:[replacedStr rangeOfString:@"adaptedHorizen("] withString:@""];
-        [replacedStr replaceCharactersInRange:[replacedStr rangeOfString:@")"] withString:@""];
+        if ([originStr hasPrefix:@":"] || [originStr hasPrefix:@"("]) {
+            originStr = [originStr substringFromIndex:1];
+        }else if([originStr hasPrefix:@"+"] || [originStr hasPrefix:@"-"]) {
+            originStr = [originStr substringFromIndex:1];
+        }
+        
+        NSString *replacedStr = [originStr copy];
+        replacedStr = [[replacedStr lowercaseString] stringByReplacingOccurrencesOfString:@"rpx" withString:@""];
         
         attrValue = [attrValue stringByReplacingOccurrencesOfString:originStr withString:[NSString stringWithFormat:@"%f", [replacedStr floatValue]*[UIScreen mainScreen].bounds.size.width/kStandardWidth]];
         
     }
-    NSString *regExpr3 = @"adaptedVertical\\([+-]*\\d*\\.{0,1}\\d*\\)";
+    NSString *regExpr3 = @"[:\\(]{0,1}[+-]{0,1}\\d*\\.{0,1}\\d*(px|PX|Px|pX)";
     NSRange range3 = [attrValue rangeOfString:regExpr3 options:NSRegularExpressionSearch];
     if (range3.location != NSNotFound) {
         NSString *originStr = [attrValue substringWithRange:range3];
-        NSMutableString *replacedStr = [originStr mutableCopy];
-        [replacedStr replaceCharactersInRange:[replacedStr rangeOfString:@"adaptedVertical("] withString:@""];
-        [replacedStr replaceCharactersInRange:[replacedStr rangeOfString:@")"] withString:@""];
+        if ([originStr hasPrefix:@":"] || [originStr hasPrefix:@"("]) {
+            originStr = [originStr substringFromIndex:1];
+        }else if([originStr hasPrefix:@"+"] || [originStr hasPrefix:@"-"]) {
+            originStr = [originStr substringFromIndex:1];
+        }
+        NSString *replacedStr = [originStr copy];
+        replacedStr = [[replacedStr lowercaseString] stringByReplacingOccurrencesOfString:@"px" withString:@""];
         
-        attrValue = [attrValue stringByReplacingOccurrencesOfString:originStr withString:[NSString stringWithFormat:@"%f", [replacedStr floatValue]*[UIScreen mainScreen].bounds.size.height/kStandardHeight]];
+        attrValue = [attrValue stringByReplacingOccurrencesOfString:originStr withString:[NSString stringWithFormat:@"%f", [replacedStr floatValue]/[UIScreen mainScreen].scale]];
         
     }
-    NSString *regExpr = @"statusBarAddedTo\\([+-]*\\d*\\.{0,1}\\d*\\)";
+    NSString *regExpr7 = @"[:\\(]{0,1}[+-]{0,1}\\d*\\.{0,1}\\d*(pt|PT|Pt|pT)";
+    NSRange range7 = [attrValue rangeOfString:regExpr7 options:NSRegularExpressionSearch];
+    if (range7.location != NSNotFound) {
+        NSString *originStr = [attrValue substringWithRange:range7];
+        if ([originStr hasPrefix:@":"] || [originStr hasPrefix:@"("]) {
+            originStr = [originStr substringFromIndex:1];
+        }else if([originStr hasPrefix:@"+"] || [originStr hasPrefix:@"-"]) {
+            originStr = [originStr substringFromIndex:1];
+        }
+        NSString *replacedStr = [originStr copy];
+        replacedStr = [[replacedStr lowercaseString] stringByReplacingOccurrencesOfString:@"pt" withString:@""];
+        
+        attrValue = [attrValue stringByReplacingOccurrencesOfString:originStr withString:[NSString stringWithFormat:@"%f", [replacedStr floatValue]]];
+        
+    }
+    NSString *regExpr = @"statusBarAddedTo\\([+-]{0,1}\\d*\\.{0,1}\\d*\\)";
     NSRange range = [attrValue rangeOfString:regExpr options:NSRegularExpressionSearch];
     if (range.location != NSNotFound) {
         NSString *originStr = [attrValue substringWithRange:range];
@@ -239,7 +263,7 @@ void FlexSetViewAttr(UIView* view,
         attrValue = [attrValue stringByReplacingOccurrencesOfString:originStr withString:[NSString stringWithFormat:@"%f", CGRectGetHeight([UIApplication sharedApplication].statusBarFrame)+[replacedStr floatValue]]];
         
     }
-    NSString *regExpr1 = @"homeIndicatorAddedTo\\([+-]*\\d*\\.{0,1}\\d*\\)";
+    NSString *regExpr1 = @"homeIndicatorAddedTo\\([+-]{0,1}\\d*\\.{0,1}\\d*\\)";
     NSRange range1 = [attrValue rangeOfString:regExpr1 options:NSRegularExpressionSearch];
     if (range1.location != NSNotFound) {
         NSString *originStr = [attrValue substringWithRange:range1];
@@ -413,29 +437,52 @@ void FlexApplyLayoutParam(YGLayout* layout,
         value = [value stringByReplacingOccurrencesOfString:originStr withString:[NSString stringWithFormat:@"%f", [UIScreen mainScreen].bounds.size.height]];
         
     }
-    NSString *regExpr2 = @"adaptedHorizen\\([+-]*\\d*\\.{0,1}\\d*\\)";
+    NSString *regExpr2 = @"[:\\(]{0,1}[+-]{0,1}\\d*\\.{0,1}\\d*(RPx|RpX|rPX|Rpx|rPx|rpX|rpx|RPX)";
     NSRange range2 = [value rangeOfString:regExpr2 options:NSRegularExpressionSearch];
     if (range2.location != NSNotFound) {
         NSString *originStr = [value substringWithRange:range2];
-        NSMutableString *replacedStr = [originStr mutableCopy];
-        [replacedStr replaceCharactersInRange:[replacedStr rangeOfString:@"adaptedHorizen("] withString:@""];
-        [replacedStr replaceCharactersInRange:[replacedStr rangeOfString:@")"] withString:@""];
+        if ([originStr hasPrefix:@":"] || [originStr hasPrefix:@"("]) {
+            originStr = [originStr substringFromIndex:1];
+        }else if([originStr hasPrefix:@"+"] || [originStr hasPrefix:@"-"]) {
+            originStr = [originStr substringFromIndex:1];
+        }
+        NSString *replacedStr = [originStr copy];
+        replacedStr = [[replacedStr lowercaseString] stringByReplacingOccurrencesOfString:@"rpx" withString:@""];
         
         value = [value stringByReplacingOccurrencesOfString:originStr withString:[NSString stringWithFormat:@"%f", [replacedStr floatValue]*[UIScreen mainScreen].bounds.size.width/kStandardWidth]];
         
     }
-    NSString *regExpr3 = @"adaptedVertical\\([+-]*\\d*\\.{0,1}\\d*\\)";
+    NSString *regExpr3 = @"[:\\(]{0,1}[+-]{0,1}\\d*\\.{0,1}\\d*(px|PX|Px|pX)";
     NSRange range3 = [value rangeOfString:regExpr3 options:NSRegularExpressionSearch];
     if (range3.location != NSNotFound) {
         NSString *originStr = [value substringWithRange:range3];
-        NSMutableString *replacedStr = [originStr mutableCopy];
-        [replacedStr replaceCharactersInRange:[replacedStr rangeOfString:@"adaptedVertical("] withString:@""];
-        [replacedStr replaceCharactersInRange:[replacedStr rangeOfString:@")"] withString:@""];
+        if ([originStr hasPrefix:@":"] || [originStr hasPrefix:@"("]) {
+            originStr = [originStr substringFromIndex:1];
+        }else if([originStr hasPrefix:@"+"] || [originStr hasPrefix:@"-"]) {
+            originStr = [originStr substringFromIndex:1];
+        }
+        NSString *replacedStr = [originStr copy];
+        replacedStr = [[replacedStr lowercaseString] stringByReplacingOccurrencesOfString:@"px" withString:@""];
         
-        value = [value stringByReplacingOccurrencesOfString:originStr withString:[NSString stringWithFormat:@"%f", [replacedStr floatValue]*[UIScreen mainScreen].bounds.size.height/kStandardHeight]];
+        value = [value stringByReplacingOccurrencesOfString:originStr withString:[NSString stringWithFormat:@"%f", [replacedStr floatValue]/[UIScreen mainScreen].scale]];
         
     }
-    NSString *regExpr = @"statusBarAddedTo\\([+-]*\\d*\\.{0,1}\\d*\\)";
+    NSString *regExpr7 = @"[:\\(]{0,1}[+-]{0,1}\\d*\\.{0,1}\\d*(pt|PT|Pt|pT)";
+    NSRange range7 = [value rangeOfString:regExpr7 options:NSRegularExpressionSearch];
+    if (range7.location != NSNotFound) {
+        NSString *originStr = [value substringWithRange:range7];
+        if ([originStr hasPrefix:@":"] || [originStr hasPrefix:@"("]) {
+            originStr = [originStr substringFromIndex:1];
+        }else if([originStr hasPrefix:@"+"] || [originStr hasPrefix:@"-"]) {
+            originStr = [originStr substringFromIndex:1];
+        }
+        NSString *replacedStr = [originStr copy];
+        replacedStr = [[replacedStr lowercaseString] stringByReplacingOccurrencesOfString:@"pt" withString:@""];
+        
+        value = [value stringByReplacingOccurrencesOfString:originStr withString:[NSString stringWithFormat:@"%f", [replacedStr floatValue]]];
+        
+    }
+    NSString *regExpr = @"statusBarAddedTo\\([+-]{0,1}\\d*\\.{0,1}\\d*\\)";
     NSRange range = [value rangeOfString:regExpr options:NSRegularExpressionSearch];
     if (range.location != NSNotFound) {
         NSString *originStr = [value substringWithRange:range];
@@ -446,7 +493,7 @@ void FlexApplyLayoutParam(YGLayout* layout,
         value = [value stringByReplacingOccurrencesOfString:originStr withString:[NSString stringWithFormat:@"%f", CGRectGetHeight([UIApplication sharedApplication].statusBarFrame)+[replacedStr floatValue]]];
         
     }
-    NSString *regExpr1 = @"homeIndicatorAddedTo\\([+-]*\\d*\\.{0,1}\\d*\\)";
+    NSString *regExpr1 = @"homeIndicatorAddedTo\\([+-]{0,1}\\d*\\.{0,1}\\d*\\)";
     NSRange range1 = [value rangeOfString:regExpr1 options:NSRegularExpressionSearch];
     if (range1.location != NSNotFound) {
         NSString *originStr = [value substringWithRange:range1];
@@ -702,7 +749,7 @@ void FlexApplyLayoutParam(YGLayout* layout,
         }
         if (paramText.length > 0) {
             funcName = [funcName stringByAppendingString:@":"];
-            NSString *numRegex = @"^[+-]*\\d*\\.{0,1}\\d*$";
+            NSString *numRegex = @"^[+-]{0,1}\\d*\\.{0,1}\\d*$";
             if ([paramText caseInsensitiveCompare:@"YES"] == NSOrderedSame || [paramText caseInsensitiveCompare:@"true"] == NSOrderedSame) {
                 argu1 = @(YES);
             }else if ([paramText caseInsensitiveCompare:@"NO"] == NSOrderedSame || [paramText caseInsensitiveCompare:@"false"] == NSOrderedSame) {
